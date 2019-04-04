@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+	
+<generatorConfiguration>
+	
+	<!-- 连接数据库的信息 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<!-- 关闭自动生成注释 -->
+  	<commentGenerator>
+  		<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+	
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://123.207.18.20:3306/blog"
+        userId="root"
+        password="982479748">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 生成实体类 -->
+    <javaModelGenerator targetPackage="com.blog.entities" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- 生成映射文件 -->
+    <sqlMapGenerator targetPackage="com.blog.mapper"  targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 生成mapper文件 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.blog.dao" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+    <!-- 配置与数据库表的映射 -->
+	<!-- <table tableName="article" domainObjectName="Article"></table>
+	<table tableName="picture" domainObjectName="Picture"></table>
+	<table tableName="comment" domainObjectName="Comment"></table>
+	<table tableName="lable" domainObjectName="Lable"></table>
+	<table tableName="album" domainObjectName="Album"></table>
+	<table tableName="article_type" domainObjectName="ArticleType"></table>
+	<table tableName="article_lable" domainObjectName="ArticleLable"></table>
+	<table tableName="photo" domainObjectName="Photo"></table> -->
+	<!--<table tableName="user" domainObjectName="User"></table>-->
+      <table tableName="t_crawl_article" domainObjectName="CrawlArticle"></table>
+  </context>
+</generatorConfiguration>

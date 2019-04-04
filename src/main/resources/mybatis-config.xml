@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 	<!-- 开启二级缓存和延迟加载 -->
+	<settings>
+		<!--显式的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
+		<setting name="cacheEnabled" value="true"/>
+		<!-- <setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/> -->
+	</settings>
+	
+	<!-- 为所有实体类起别名 -->
+	<typeAliases>
+		<package name="com.blog/entities"/>
+	</typeAliases>
+	
+	<!-- 配置分页插件的拦截器 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+	        <!-- 设置参数合理化，查询页数小于1时，自动查询第一页
+	        	超过总页码时自动查询最后一页 -->
+	        <property name="reasonable" value="true"/>
+		</plugin>
+	</plugins>
+
+</configuration>
